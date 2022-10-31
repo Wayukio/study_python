@@ -1910,7 +1910,6 @@
 # print(is_pangram(text))
 
 
-from itertools import count
 import random
 
 def throw_cube():
