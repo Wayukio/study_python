@@ -1951,22 +1951,47 @@ def counting_score(counter):
         score = 100 - (counter - 7)
     return score
 
+def is_valid(n):
+    if n.isdigit() and 1 <= n <= 100:
+        return True
+    else:
+        return False
+
 def game_ugadayka():
+    print('Добро пожаловать в числовую угадайку!')
     number = random_num_in_list()
     count_attempt = 0
     while True:
         count_attempt += 1
-        n = int(input('Введите число и нажмите клавишу "Enter": '))
+        n = input('Введите число и нажмите клавишу "Enter": ')
+        if is_valid(n):
+            count_attempt += 1
+            n = int(n)
+        else:
+            print('Сработала защита от дурака... Введите, пожалуйста ЦЕЛОЕ ЧИСЛО, в диапазоне ОТ 1 ДО 100!')
+            continue
         if n == number:
             score = counting_score(count_attempt)
             print('Вы угадали, поздравляем!', '', f'Количество попыток: {count_attempt}', f'Заработано очков: {score}', sep='\n')
+            print('Спасибо, что играли в числовую угадайку. Еще увидимся...')
             break
         elif n > number:
-            print('Слишком много, попробуйте еще раз')
+            print(random.choice(['Слишком много, попробуйте еще раз', 'СЛИШКОМ БОЛЬШОЕ ЧИСЛО', 'Выбери число поменбше...']))
             print('')
             continue
         else:
-            print('Слишком мало, попробуйте еще раз')
+            print(random.choice(['Слишком мало, попробуйте еще раз', 
+            'Увы и ах, но число которое вы ввели оказалось нестерпимо великоватым, в сравнении с тем, что было загадано', 
+            'Это число малюська']))
             print('')
             continue
 
+def attempt_guess_number(n):
+    counter = 0
+    while n != 1:
+        counter += 1
+        if n != 1:
+            if n % 2 != 0:
+                n += 1        
+        n //= 2
+    return counter
