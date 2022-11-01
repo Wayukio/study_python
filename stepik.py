@@ -1910,88 +1910,245 @@
 # print(is_pangram(text))
 
 
+
+
+# ███╗░░░███╗██╗███╗░░██╗██╗  ██████╗░██████╗░░█████╗░░░░░░██╗███████╗░█████╗░████████╗░██████╗
+# ████╗░████║██║████╗░██║██║  ██╔══██╗██╔══██╗██╔══██╗░░░░░██║██╔════╝██╔══██╗╚══██╔══╝██╔════╝
+# ██╔████╔██║██║██╔██╗██║██║  ██████╔╝██████╔╝██║░░██║░░░░░██║█████╗░░██║░░╚═╝░░░██║░░░╚█████╗░
+# ██║╚██╔╝██║██║██║╚████║██║  ██╔═══╝░██╔══██╗██║░░██║██╗░░██║██╔══╝░░██║░░██╗░░░██║░░░░╚═══██╗
+# ██║░╚═╝░██║██║██║░╚███║██║  ██║░░░░░██║░░██║╚█████╔╝╚█████╔╝███████╗╚█████╔╝░░░██║░░░██████╔╝
+# ╚═╝░░░░░╚═╝╚═╝╚═╝░░╚══╝╚═╝  ╚═╝░░░░░╚═╝░░╚═╝░╚════╝░░╚════╝░╚══════╝░╚════╝░░░░╚═╝░░░╚═════╝░
+
+
 import random
 
-def throw_cube():
-    firs_cube = 'Перый кубик ' + str(random.randint(1, 6))
-    second_cube = 'Второй кубик ' + str(random.randint(1, 6))
-    print(firs_cube, second_cube, sep='\n')
+# def throw_cube():
+#     firs_cube = 'Перый кубик ' + str(random.randint(1, 6))
+#     second_cube = 'Второй кубик ' + str(random.randint(1, 6))
+#     print(firs_cube, second_cube, sep='\n')
 
-def throw_coin():
-    coin = random.randint(0, 1)
-    if coin == 0:
-        coin = 'Орёл'
-    else:
-        coin = 'Решка'
-    print(coin)
+# def throw_coin():
+#     coin = random.randint(0, 1)
+#     if coin == 0:
+#         coin = 'Орёл'
+#     else:
+#         coin = 'Решка'
+#     print(coin)
 
-def amount_throw_coin(n):
-    for _ in range(n):
-        throw_coin()
+# def amount_throw_coin(n):
+#     for _ in range(n):
+#         throw_coin()
 
-def random_list_1_100():
-    numbers = [i for i in range(1, 101)]
-    random.shuffle(numbers)
-    return numbers
+# def random_list_1_100():
+#     numbers = [i for i in range(1, 101)]
+#     random.shuffle(numbers)
+#     return numbers
 
-def random_num_in_list():
-    num = random.choice(random_list_1_100())
-    return num
 
-def random_some_num_in_list():
-    count_nums = random_num_in_list()
-    print(count_nums)
-    random_nums = random.sample(random_list_1_100(), count_nums)
-    return random_nums
+### GAME UGADAYKA ###
+# def random_num_in_list():
+#     num = random.choice(random_list_1_100())
+#     return num
 
-def counting_score(counter):
-    if counter in range(1, 8):
-        score = 100
-    else:
-        score = 100 - (counter - 7)
-    return score
+# def random_some_num_in_list():
+#     count_nums = random_num_in_list()
+#     print(count_nums)
+#     random_nums = random.sample(random_list_1_100(), count_nums)
+#     return random_nums
 
-def is_valid(n):
-    if n.isdigit() and 1 <= n <= 100:
-        return True
-    else:
-        return False
+# def counting_score(counter):
+#     if counter in range(1, 8):
+#         score = 100
+#     else:
+#         score = 100 - (counter - 7)
+#     return score
 
-def game_ugadayka():
-    print('Добро пожаловать в числовую угадайку!')
-    number = random_num_in_list()
-    count_attempt = 0
+# def is_valid(n):
+#     if n.isdigit() and 1 <= int(n) <= 100:
+#         return True
+#     else:
+#         return False
+
+# def game_ugadayka():
+#     print('Добро пожаловать в числовую угадайку!')
+#     number = random_num_in_list()
+#     count_attempt = 0
+#     while True:
+#         n = input('Введите число от 1 до 100 и нажмите клавишу "Enter": ')
+#         if is_valid(n):
+#             count_attempt += 1
+#             n = int(n)
+#         else:
+#             print('Сработала защита от дурака... Введите, пожалуйста ЦЕЛОЕ ЧИСЛО, в диапазоне ОТ 1 ДО 100!')
+#             continue
+#         if n == number:
+#             score = counting_score(count_attempt)
+#             print('Вы угадали, поздравляем!', '', f'Количество попыток: {count_attempt}', f'Заработано очков: {score}', sep='\n')
+#             print('Спасибо, что играли в числовую угадайку. Еще увидимся...')
+#             break
+#         elif n > number:
+#             print(random.choice(['Слишком много, попробуйте еще раз', 'СЛИШКОМ БОЛЬШОЕ ЧИСЛО', 'Выбери число поменбше...']))
+#             print('')
+#             continue
+#         else:
+#             print(random.choice(['Слишком мало, попробуйте еще раз', 
+#             'Увы и ах, но число которое вы ввели оказалось нестерпимо маловатым, в сравнении с тем, что было загадано', 
+#             'Это число малюська']))
+#             print('')
+#             continue
+
+# def attempt_guess_number(n):
+#     counter = 0
+#     while n != 1:
+#         counter += 1
+#         if n != 1:
+#             if n % 2 != 0:
+#                 n += 1        
+#         n //= 2
+#     return counter
+
+
+##### MAGIC BALL #####
+# answers = ["Бесспорно", "Предрешено", "Никаких сомнений", "Определённо да","Можешь быть уверен в этом", 
+# "Мне кажется - да", "Вероятнее всего", "Хорошие перспективы", "Знаки говорят - да", "Да", 
+# "Пока неясно, попробуй снова", "Спроси позже", "Лучше не рассказывать", "Сейчас нельзя предсказать", "Сконцентрируйся и спроси опять", 
+# "Даже не думай", "Мой ответ - нет", "По моим данным - нет", "Перспективы не очень хорошие", "Весьма сомнительно"]
+
+# pre_answers = ["Хмммм, я думаю что мой ответ...", "Внимай в мое слово...", "Лучший ответ на твой вопрос..."]
+
+# questions = ["Что таится внутри тебя? Задай вопрос:", "Есть такой вопрос, который интересен тебе? Спроси:", "Я отвечу на любой вопрос, просто напиши его сюда:"]
+
+# def greeting_magic_ball():
+#     print('Привет Мир, я магический шар, и я знаю ответ на любой твой вопрос...')
+#     name = input("Назовись, смертная душа: ")
+#     print(f'Приветствую тебя, {name}!!!')
+
+# def end_scene():
+#     print('Желаете ли вы вновь получить ответ на свой вопрос? Ответьте, "Да" или "Нет":', end=' ')
+#     while True:
+#         restart = input().lower()
+#         if restart.isalpha() and restart in ['да', 'нет']:
+#             if restart == 'да':
+#                 return True
+#             else:
+#                 return False
+#         else:
+#             print('ВСЕГО ДВА ВАРИАНТА ОТВЕТА!!! Попробуйте снова:', end=' ')
+#             continue
+
+# def answer_magic_ball():
+    # greeting_magic_ball()
+    # while True:
+    #     answer = random.choice(answers)
+    #     print(random.choice(questions))
+    #     quest = input()
+    #     print(random.choice(pre_answers), answer)
+    #     if end_scene() == True:
+    #         continue
+    #     else:
+    #         print(f'До скорых встреч, мы еще увидимся... А если нет, то я это прдесказал!!!')
+    #         break
+
+
+### Password Generator ###
+digits = '0123456789'
+lowercase_letters = 'abcdefghijklmnopqrstuvwxyz'
+uppercase_letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+punctuation = '!#$%&*+-=?@^_'
+
+def is_validation_count_len(n):
     while True:
-        count_attempt += 1
-        n = input('Введите число и нажмите клавишу "Enter": ')
-        if is_valid(n):
-            count_attempt += 1
-            n = int(n)
+        if n.isdigit():
+            return True
         else:
-            print('Сработала защита от дурака... Введите, пожалуйста ЦЕЛОЕ ЧИСЛО, в диапазоне ОТ 1 ДО 100!')
-            continue
-        if n == number:
-            score = counting_score(count_attempt)
-            print('Вы угадали, поздравляем!', '', f'Количество попыток: {count_attempt}', f'Заработано очков: {score}', sep='\n')
-            print('Спасибо, что играли в числовую угадайку. Еще увидимся...')
-            break
-        elif n > number:
-            print(random.choice(['Слишком много, попробуйте еще раз', 'СЛИШКОМ БОЛЬШОЕ ЧИСЛО', 'Выбери число поменбше...']))
-            print('')
-            continue
-        else:
-            print(random.choice(['Слишком мало, попробуйте еще раз', 
-            'Увы и ах, но число которое вы ввели оказалось нестерпимо великоватым, в сравнении с тем, что было загадано', 
-            'Это число малюська']))
-            print('')
-            continue
+            return False
 
-def attempt_guess_number(n):
-    counter = 0
-    while n != 1:
-        counter += 1
-        if n != 1:
-            if n % 2 != 0:
-                n += 1        
-        n //= 2
-    return counter
+def is_validation_yes_no(ans):
+    while True:
+        if ans in ['да', 'нет']:
+            return True
+        else:
+            return False
+
+def pasword_information():
+    while True:
+        count_passwords = input('Введите количество паролей для генерации: ')
+        if is_validation_count_len(count_passwords):
+            count_passwords = int(count_passwords)
+            break
+        else:
+            print('Введите коректные даные (число)')
+            continue
+    while True:
+        len_one_password = input('Введите длину одного пароля: ')
+        if is_validation_count_len(len_one_password):
+            len_one_password = int(len_one_password)
+            break
+        else:
+            print('Введите коректные даные (число)')
+            continue
+    while True:
+        digg = input('Должны ли быть цифры? Ответьте, "да" или "нет": ').lower()
+        if is_validation_yes_no(digg):
+            break
+        else:
+            print('Только "да" или "нет" Попробуйте снова:', end=' ')
+            continue
+    while True:
+        alph_upper = input('Должны ли быть БОЛЬШИЕ БУКВЫ? Ответьте, "да" или "нет": ').lower()
+        if is_validation_yes_no(alph_upper):
+            break
+        else:
+            print('Только "да" или "нет" Попробуйте снова:', end=' ')
+            continue
+    while True:
+        alph_lower = input('Должны ли быть маленькие буквы? Ответьте, "да" или "нет": ').lower()
+        if is_validation_yes_no(alph_lower):
+            break
+        else:
+            print('Только "да" или "нет" Попробуйте снова:', end=' ')
+            continue
+    while True:
+        good_simbol = input('Должны ли быть символы (!#$%&*+-=?@^_)? Ответьте, "да" или "нет": ').lower()
+        if is_validation_yes_no(good_simbol):
+            break
+        else:
+            print('Только "да" или "нет" Попробуйте снова:', end=' ')
+            continue
+    while True:
+        bad_simbol = input('Исключить ли неоднозначные символы (il1Lo0O)? Ответьте, "да" или "нет": ').lower()
+        if is_validation_yes_no(bad_simbol):
+            break
+        else:
+            print('Только "да" или "нет" Попробуйте снова:', end=' ')
+            continue
+    list_answer = [count_passwords, len_one_password, digg, alph_upper, alph_lower, good_simbol, bad_simbol]
+    return list_answer
+
+def chars_complete():
+    chars = ''
+    list_answer = pasword_information()
+    if list_answer[2] == 'да':
+        chars += digits
+    if list_answer[3] == 'да':
+        chars += uppercase_letters
+    if list_answer[4] == 'да':
+        chars += lowercase_letters
+    if list_answer[5] == 'да':
+        chars += punctuation
+    if list_answer[6] == 'да':
+        for i in 'il1Lo0O':
+            chars = chars.replace(i, '')
+    return chars
+
+def generate_password():
+    chars = chars_complete()
+    list_answer = pasword_information()
+    print(list_answer)
+    for j in range(list_answer[0]):
+        password = ''
+        while len(chars) != list_answer[1]:
+            password += random.choice(chars)
+        print(password)
+
+generate_password() # Дублируется ввод почему-то выяснить
