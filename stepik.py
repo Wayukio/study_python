@@ -1998,14 +1998,14 @@ import random
 #             continue
 
 # def attempt_guess_number(n):
-#     counter = 0
-#     while n != 1:
-#         counter += 1
-#         if n != 1:
-#             if n % 2 != 0:
-#                 n += 1        
-#         n //= 2
-#     return counter
+    # counter = 0
+    # while n != 1:
+    #     counter += 1
+    #     if n != 1:
+    #         if n % 2 != 0:
+    #             n += 1        
+    #     n //= 2
+    # return counter
 
 
 ##### MAGIC BALL #####
@@ -2037,18 +2037,17 @@ import random
 #             continue
 
 # def answer_magic_ball():
-    # greeting_magic_ball()
-    # while True:
-    #     answer = random.choice(answers)
-    #     print(random.choice(questions))
-    #     quest = input()
-    #     print(random.choice(pre_answers), answer)
-    #     if end_scene() == True:
-    #         continue
-    #     else:
-    #         print(f'До скорых встреч, мы еще увидимся... А если нет, то я это прдесказал!!!')
-    #         break
-
+#     greeting_magic_ball()
+#     while True:
+#         answer = random.choice(answers)
+#         print(random.choice(questions))
+#         quest = input()
+#         print(random.choice(pre_answers), answer)
+#         if end_scene() == True:
+#             continue
+#         else:
+#             print(f'До скорых встреч, мы еще увидимся... А если нет, то я это прдесказал!!!')
+#             break
 
 ### Password Generator ###
 digits = '0123456789'
@@ -2070,85 +2069,95 @@ def is_validation_yes_no(ans):
         else:
             return False
 
-def pasword_information():
+def pasword_count_information():
     while True:
         count_passwords = input('Введите количество паролей для генерации: ')
         if is_validation_count_len(count_passwords):
             count_passwords = int(count_passwords)
-            break
+            return count_passwords
         else:
             print('Введите коректные даные (число)')
             continue
+
+def pasword_length_information():
     while True:
         len_one_password = input('Введите длину одного пароля: ')
         if is_validation_count_len(len_one_password):
             len_one_password = int(len_one_password)
-            break
+            return len_one_password
         else:
             print('Введите коректные даные (число)')
             continue
+
+def pasword_chars_information():
     while True:
-        digg = input('Должны ли быть цифры? Ответьте, "да" или "нет": ').lower()
-        if is_validation_yes_no(digg):
-            break
-        else:
-            print('Только "да" или "нет" Попробуйте снова:', end=' ')
+        while True:
+            digg = input('Должны ли быть цифры? Ответьте, "да" или "нет": ').lower()
+            if is_validation_yes_no(digg):
+                break
+            else:
+                print('Только "да" или "нет" Попробуйте снова:', end=' ')
+                continue
+        while True:
+            alph_upper = input('Должны ли быть БОЛЬШИЕ БУКВЫ? Ответьте, "да" или "нет": ').lower()
+            if is_validation_yes_no(alph_upper):
+                break
+            else:
+                print('Только "да" или "нет" Попробуйте снова:', end=' ')
+                continue
+        while True:
+            alph_lower = input('Должны ли быть маленькие буквы? Ответьте, "да" или "нет": ').lower()
+            if is_validation_yes_no(alph_lower):
+                break
+            else:
+                print('Только "да" или "нет" Попробуйте снова:', end=' ')
+                continue
+        while True:
+            good_simbol = input('Должны ли быть символы (!#$%&*+-=?@^_)? Ответьте, "да" или "нет": ').lower()
+            if is_validation_yes_no(good_simbol):
+                break
+            else:
+                print('Только "да" или "нет" Попробуйте снова:', end=' ')
+                continue
+        while True:
+            bad_simbol = input('Исключить ли неоднозначные символы (il1Lo0O)? Ответьте, "да" или "нет": ').lower()
+            if is_validation_yes_no(bad_simbol):
+                break
+            else:
+                print('Только "да" или "нет" Попробуйте снова:', end=' ')
+                continue
+        list_answer = [digg, alph_upper, alph_lower, good_simbol, bad_simbol]
+        if 'да' not in list_answer[:-1]:
+            print('Вы не выбрали символов. Генерация невозможна, попробуйте еще раз.')
             continue
-    while True:
-        alph_upper = input('Должны ли быть БОЛЬШИЕ БУКВЫ? Ответьте, "да" или "нет": ').lower()
-        if is_validation_yes_no(alph_upper):
-            break
         else:
-            print('Только "да" или "нет" Попробуйте снова:', end=' ')
-            continue
-    while True:
-        alph_lower = input('Должны ли быть маленькие буквы? Ответьте, "да" или "нет": ').lower()
-        if is_validation_yes_no(alph_lower):
             break
-        else:
-            print('Только "да" или "нет" Попробуйте снова:', end=' ')
-            continue
-    while True:
-        good_simbol = input('Должны ли быть символы (!#$%&*+-=?@^_)? Ответьте, "да" или "нет": ').lower()
-        if is_validation_yes_no(good_simbol):
-            break
-        else:
-            print('Только "да" или "нет" Попробуйте снова:', end=' ')
-            continue
-    while True:
-        bad_simbol = input('Исключить ли неоднозначные символы (il1Lo0O)? Ответьте, "да" или "нет": ').lower()
-        if is_validation_yes_no(bad_simbol):
-            break
-        else:
-            print('Только "да" или "нет" Попробуйте снова:', end=' ')
-            continue
-    list_answer = [count_passwords, len_one_password, digg, alph_upper, alph_lower, good_simbol, bad_simbol]
     return list_answer
 
 def chars_complete():
     chars = ''
-    list_answer = pasword_information()
-    if list_answer[2] == 'да':
+    list_answer = pasword_chars_information()
+    if list_answer[0] == 'да':
         chars += digits
-    if list_answer[3] == 'да':
+    if list_answer[1] == 'да':
         chars += uppercase_letters
-    if list_answer[4] == 'да':
+    if list_answer[2] == 'да':
         chars += lowercase_letters
-    if list_answer[5] == 'да':
+    if list_answer[3] == 'да':
         chars += punctuation
-    if list_answer[6] == 'да':
+    if list_answer[4] == 'да':
         for i in 'il1Lo0O':
             chars = chars.replace(i, '')
     return chars
 
-def generate_password():
-    chars = chars_complete()
-    list_answer = pasword_information()
-    print(list_answer)
-    for j in range(list_answer[0]):
+def generate_password(length, chars):
+    count = pasword_count_information()
+    for j in range(count):
         password = ''
-        while len(chars) != list_answer[1]:
+        while len(password) < length:
             password += random.choice(chars)
         print(password)
 
-generate_password() # Дублируется ввод почему-то выяснить
+length = pasword_length_information()
+chars = chars_complete()
+generate_password(length, chars)
