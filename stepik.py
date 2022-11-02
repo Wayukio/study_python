@@ -2165,8 +2165,8 @@ import random
 ### Caezar cipher ###
 # rus_al_up = [chr(ord('А') + i) for i in range(32) if chr(ord('А') + i) != 'Ё']
 # rus_al_low = [chr(ord('а') + i) for i in range(32) if chr(ord('А') + i) != 'ё']
-en_al_up = [chr(ord('A') + i) for i in range(26)]
-en_al_low = [chr(ord('a') + i) for i in range(26)]
+# en_al_up = [chr(ord('A') + i) for i in range(26)]
+# en_al_low = [chr(ord('a') + i) for i in range(26)]
 
 # def direction_cipher():
 #     while True:
@@ -2226,39 +2226,54 @@ en_al_low = [chr(ord('a') + i) for i in range(26)]
 
 # print(caesar_ciphr())
 
-def step_direction(text):
-    steps = []
-    text = [i for i in text if i not in '!#$%&*+-=?@^_.,";:']
-    text = ''.join(text)
-    text = text.split()
-    for j in range(len(text)):
-        steps.append(len(text[j]))
-    return steps
+# def step_direction(text):
+#     steps = []
+#     text = [i for i in text if i not in '!#$%&*+-=?@^_.,";:']
+#     text = ''.join(text)
+#     text = text.split()
+#     for j in range(len(text)):
+#         steps.append(len(text[j]))
+#     return steps
 
-def caesar_ciphr():
-    text = input()
-    steps = step_direction(text)
-    answer = []
-    j = 0
-    k = 0
-    for i in range(len(text)):
-        ciphr_abc_up = en_al_up[steps[j]:] + en_al_up[:steps[j]]
-        ciphr_abc_low = en_al_low[steps[j]:] + en_al_low[:steps[j]]
-        if text[i].isalpha():
-            if text[i].isupper():
-                symbol_index = en_al_up.index(text[i])
-                answer += ciphr_abc_up[symbol_index]
-                k += 1
-            elif text[i].islower():
-                symbol_index = en_al_low.index(text[i])
-                answer += ciphr_abc_low[symbol_index]
-                k += 1
-        else:
-            answer += text[i]
-        if steps[j:] != steps[-1:]:
-            if k == steps[j]:
-                j += 1
-                k = 0
-    return ''.join(answer)
+# def caesar_ciphr():
+#     text = input()
+#     steps = step_direction(text)
+#     answer = []
+#     j = 0
+#     k = 0
+#     for i in range(len(text)):
+#         ciphr_abc_up = en_al_up[steps[j]:] + en_al_up[:steps[j]]
+#         ciphr_abc_low = en_al_low[steps[j]:] + en_al_low[:steps[j]]
+#         if text[i].isalpha():
+#             if text[i].isupper():
+#                 symbol_index = en_al_up.index(text[i])
+#                 answer += ciphr_abc_up[symbol_index]
+#                 k += 1
+#             elif text[i].islower():
+#                 symbol_index = en_al_low.index(text[i])
+#                 answer += ciphr_abc_low[symbol_index]
+#                 k += 1
+#         else:
+#             answer += text[i]
+#         if steps[j:] != steps[-1:]:
+#             if k == steps[j]:
+#                 j += 1
+#                 k = 0
+#     return ''.join(answer)
 
-print(caesar_ciphr())
+# print(caesar_ciphr())
+
+def perevod(num, system):
+    summ = 0
+    digits = [10, 11, 12, 13, 14, 15]
+    abcd = ['a', 'b', 'c', 'd', 'e', 'f']
+    for i in range(len(num)):
+        bob = num[i]
+        if bob in abcd:
+            bob = digits[abcd.index(bob)]
+        summ += int(bob) * (system ** (len(num) - 1 - i))
+    return summ
+
+num = input().lower()
+system = int(input())
+print(perevod(num, system))
