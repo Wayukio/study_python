@@ -2456,3 +2456,5 @@ def play_game(word):
 
 word = get_word()
 play_game(word)
+
+# КОНЕЦ КУРСА
