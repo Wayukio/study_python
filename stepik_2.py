@@ -10,7 +10,44 @@
 # a, b = float(input()), float(input())
 # index_weight(a, b)
 
-left = input() # Ввод левой части строки
-right = left[::-1].replace('(', ')') # Правой строке присваиваем левую строку в обратном порядке (срез [::-1]) и методом replace меняем левые скобки на правые.
-answer = left + right
+# def is_valid_parentheses(par):
+#     while True:
+#         par2 = par.replace('()', '')
+#         if par != par2:
+#             par = par2
+#         elif par == '':
+#             return True
+#         else:
+#             return False
+
+# par = ')(()))'
+# print(is_valid_parentheses(par))
+
+# end_simbol = ' !."№;%:?*()_-+=/\\}{][\'<>~`'
+# text = input()
+# add_word = 'ay'
+# add_symbol = ''
+
+# while text[-1] in end_simbol:
+#     add_symbol += text[-1]
+#     text = text[:-1]
+
+# text = text.split()
+# add_symbol = add_symbol[::-1]
+# text = ' '.join([i[1:] + i[0] + add_word for i in text]) + add_symbol
+
+# print(text)
+
+array = '5 6 2 4'.split()
+array = list(map(int, array))
+sum_ = 8
+start = 0
+finish = len(array)
+
+while start < finish:
+    for i in range(start + 1, finish):
+        if array[start] + array[i] == sum_:
+            answer = f'{start} {i}'
+    start += 1
+
 print(answer)
