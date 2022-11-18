@@ -38,16 +38,38 @@
 
 # print(text)
 
-array = '5 6 2 4'.split()
-array = list(map(int, array))
-sum_ = 8
-start = 0
-finish = len(array)
+# array = '5 6 2 4'.split()
+# array = list(map(int, array))
+# sum_ = 8
+# start = 0
+# finish = len(array)
 
-while start < finish:
-    for i in range(start + 1, finish):
-        if array[start] + array[i] == sum_:
-            answer = f'{start} {i}'
-    start += 1
+# while start < finish:
+#     for i in range(start + 1, finish):
+#         if array[start] + array[i] == sum_:
+#             answer = f'{start} {i}'
+#     start += 1
 
-print(answer)
+# print(answer)
+
+import re
+
+
+# input_data = input()
+# Match = re.match(input_data, input_data)
+
+# print(Match.group(), Match.start(), Match.end(), sep='\n')
+
+letter = input()
+greeting = r'Здравствуйте|Hello'
+check = re.match(greeting, letter)
+positive_answer = 'Ну привет!'
+negative_answer = 'Фу, как некультурно!'
+
+
+def answer_to_letter(check):
+    if check != None:
+        return positive_answer
+    return negative_answer
+
+print(answer_to_letter(check))
