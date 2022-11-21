@@ -53,6 +53,7 @@
 # print(answer)
 
 import re
+import random
 
 
 # input_data = input()
@@ -60,16 +61,83 @@ import re
 
 # print(Match.group(), Match.start(), Match.end(), sep='\n')
 
-letter = input()
-greeting = r'Здравствуйте|Hello'
-check = re.match(greeting, letter)
-positive_answer = 'Ну привет!'
-negative_answer = 'Фу, как некультурно!'
+# letter = input()
+# greeting = r'Здравствуйте|Hello'
+# check = re.match(greeting, letter)
+# positive_answer = 'Ну привет!'
+# negative_answer = 'Фу, как некультурно!'
 
 
-def answer_to_letter(check):
-    if check != None:
-        return positive_answer
-    return negative_answer
+# def answer_to_letter(check):
+#     if check != None:
+#         return positive_answer
+#     return negative_answer
 
-print(answer_to_letter(check))
+# print(answer_to_letter(check))
+
+# names = ['Иоан', 'Платон', 'Омар', 'Ибрагим', 'Кеша']
+# surnames = ['Феофанов', 'Жлобин', 'Золотов', 'Монпасье', 'Эмгыр']
+# students = []
+
+
+# def years_suffix(age):
+#     if str(age)[-1] in '1':
+#             age_suffix = 'год'
+#     elif str(age)[-1] in '234':
+#         age_suffix = 'года'
+#     else:
+#         age_suffix = 'лет'
+#     return age_suffix
+
+# class Person:
+#     def __init__(self, name, surname, age, grades):
+#         self.name = name
+#         self.surname = surname
+#         self.age = age
+#         self.grades = list(grades)
+
+#     def __str__(self):
+#         return f'{self.surname} {self.name}, {self.age}'
+
+#     def greet(self):
+#         age_suffix= years_suffix(self.age)
+#         return f'Привет! Меня зовут {self.surname} {self.name}, мне {self.age} {age_suffix}.'
+
+
+# def generate_students(count_stedents=5):
+#     while len(students) != count_stedents:
+#         students.append([random.choice(surnames), random.choice(names), random.randint(18, 25)])
+#     return students
+
+# man_1 = Person('Василий', 'Юдин', 23, [5, 5, 5, 5, 5])
+# print(man_1)
+# print(Person.greet(man_1))
+# print(generate_students())
+
+
+user_list = {}
+answer_list = []
+counter = 1
+
+request = int(input())
+
+def add_users_num(user):
+    user += str(len(user_list[user]))
+    return user
+
+while request > 0:
+    user = input()
+    request -= 1
+    if user not in user_list:
+        answer_list.append('OK')
+        user_list[user] = {user:user}
+    else:
+        user_num = add_users_num(user)
+        user_list[user].setdefault(user_num, user_num)
+        answer_list.append(user_num)
+        
+
+for answer in answer_list:
+    print(answer)
+
+print(user_list)
